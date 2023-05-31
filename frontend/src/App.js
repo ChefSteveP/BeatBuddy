@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Login from './Components/Login/login';
+import Profile from './Components/Login/profile';
 
 function App() {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get("code");
+  console.log('code:', code);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!code && <Login />}
+      {code && <Profile code={code} />}
+    </>
   );
 }
 
