@@ -69,7 +69,7 @@ export const ConversationList = ({ userId }) => {
                 color: 'white',
                 marginBottom: '10px',
                 position: 'absolute',
-                top: '25px',
+                top: '90px',
                 right: '10px',
             }}
           >
