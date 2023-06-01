@@ -38,14 +38,9 @@ export const ConversationList = ({ userId }) => {
         closeDialog();
         try {
           const response = await axios.get(`http://localhost:9000/users/byUsername/${newUserName}`);
-          console.log('Fetched user data:', response.data);  // log the fetched user data
           
           const newUserId = response.data.id;
-          console.log('newUserId:', newUserId);  // log newUserId
     
-          console.log('userId:', userId);  // log userId
-    
-          // manually using user1 for the userId
           await axios.post('http://localhost:9000/conversations', { senderId: currentUser, recipientId: newUserId })
             .then((response) => {
               const { conversationId } = response.data;

@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, TextField, Button } from '@mui/material';
 
-// just an example, you should replace this with the real current user ID
 const currentUserID = "EvEv5DbtLHpS0Usz0Nw0";
 
 const ConversationPage = () => {
@@ -11,7 +10,7 @@ const ConversationPage = () => {
   const [newMessage, setNewMessage] = useState("");
   const [conversation, setConversation] = useState(null);
   let { conversationId } = useParams();
-  let navigate = useNavigate(); // use this instead of useHistory
+  let navigate = useNavigate(); 
 
   const fetchMessages = useCallback(async () => {
     try{
@@ -59,7 +58,6 @@ const ConversationPage = () => {
       });
 
       setNewMessage("");
-      // Fetch the new list of messages
       fetchMessages();
     } catch (err) {
       console.log(err);
@@ -81,7 +79,7 @@ const ConversationPage = () => {
           <h1>{conversation.members.slice(1).join(', ')}</h1>
         )}
       </Box>
-      {/* Reverse the messages array here */}
+      {}
       {[...messages].reverse().map((message, index) => (
         <Box
           key={index}
