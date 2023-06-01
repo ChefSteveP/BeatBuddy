@@ -1,11 +1,14 @@
 import React from 'react';
 
-const clientId = "d462fe5eb75b418080da09ca8e379505"; // Replace with your client id
+const clientId = "be50f8453cfb4ec0a40ab3fd4ad12b2e"; // Replace with your client id
 
 export default function Login() {
   const redirectToAuthCodeFlow = async () => {
+    //console.log('redirectToAuthCodeFlow called');
     const verifier = generateCodeVerifier(128);
+    //console.log('verifier:: ', verifier);
     const challenge = await generateCodeChallenge(verifier);
+    console.log('challenge:', challenge)
 
     localStorage.setItem("verifier", verifier);
 
