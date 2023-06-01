@@ -16,7 +16,12 @@ const ConversationPage = () => {
   const fetchMessages = useCallback(async () => {
     try{
       const response = await axios.get(`http://localhost:9000/conversations/${conversationId}/messages`);
-      setMessages(response.data);
+      const messages = response.data;
+      
+      // Sort messages by createdAt timestamp
+      messages.sort((a, b) => (a.createdAt.seconds > b.createdAt.seconds ? 1 : -1));
+
+      setMessages(messages);
     } catch (err){
       console.log(err);
     }
@@ -73,11 +78,11 @@ const ConversationPage = () => {
           Back
         </Button>
         {conversation && (
-  <h1>{conversation.members.slice(1).join(', ')}</h1>
-)}
-
+          <h1>{conversation.members.slice(1).join(', ')}</h1>
+        )}
       </Box>
-      {messages.map((message, index) => (
+      {/* Reverse the messages array here */}
+      {[...messages].reverse().map((message, index) => (
         <Box
           key={index}
           sx={{
@@ -122,6 +127,7 @@ const ConversationPage = () => {
       </Box>
     </Box>
   );
+
 };
 
 export default ConversationPage;

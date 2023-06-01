@@ -70,10 +70,12 @@ app.get('/conversations/:conversationId', async (req, res) => {
 app.get('/conversations/:conversationId/messages', async (req, res) => {
     const { conversationId } = req.params;
     try {
-        const messagesSnapshot = await db.collection('conversations').doc(conversationId).collection('messages').get();
+        const messagesSnapshot = await db.collection('conversations').doc(conversationId).collection('messages')
+        .orderBy('createdAt') // add this line
+        .get();
         const messages = [];
         messagesSnapshot.forEach(doc => {
-            messages.push(doc.data());
+            messages.push({ id: doc.id, ...doc.data() });
         });
         res.send(messages);
     } catch (error) {
@@ -81,6 +83,7 @@ app.get('/conversations/:conversationId/messages', async (req, res) => {
         res.status(500).send("Error fetching messages");
     }
 });
+
 
 app.get('/users/byUsername/:username', async (req, res) => {
     const { username } = req.params;
@@ -124,13 +127,18 @@ app.post('/conversations/:conversationId/messages', async (req, res) => {
     const { conversationId } = req.params;
     const { senderId, text } = req.body;
     try {
-        const message = await db.collection('conversations').doc(conversationId).collection('messages').add({ senderId, text });
+        const message = await db.collection('conversations').doc(conversationId).collection('messages').add({
+            senderId,
+            text,
+            createdAt: admin.firestore.FieldValue.serverTimestamp() // add this line
+        });
         res.send({ messageId: message.id });
     } catch (error) {
         console.error("Error sending message: ", error);
         res.status(500).send("Error sending message");
     }
 });
+
 
 app.listen(9000, () => {
     console.log('Server is running on port 9000');
