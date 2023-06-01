@@ -27,7 +27,7 @@ export default function AddForum() {
 
     return (
         <div>
-        <Button variant="contained"  sx={{ margin: 1, display: 'inline-flex' }}  onClick={handleClickOpen} padding={1}>
+        <Button variant="contained"  sx={{display: 'inline', backgroundColor:'#1db954', margin:1, borderRadius:5, fontFamily:'circular-medium'}}  onClick={handleClickOpen} padding={1}>
             Add Forum
         </Button>
         <Dialog open={open} onClose={handleClose}>
@@ -37,10 +37,9 @@ export default function AddForum() {
                 We want to hear your voice!
             </DialogContentText>
             <TextField
-                autoFocus
                 margin="dense"
                 id="discussion"
-                label="What is your hot take/question"
+                label="What is your *hot take*/question?"
                 fullWidth
                 type='email'
                 variant="standard"
@@ -50,10 +49,12 @@ export default function AddForum() {
             
             </DialogContent>
             <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
+            <Button sx ={{color:'red'}}
+            onClick={handleClose}>Cancel</Button>
             <Button
                 onClick={handleNewThread}      
-                style={{ background: "white" }}
+                variant = 'contained'
+                sx={{backgroundColor:'#1db954', margin:1, borderRadius:5, fontFamily:'circular-medium'}}
             >
                 Create
             </Button>

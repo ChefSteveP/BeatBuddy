@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const db = require('../../firebase');
 
-const {doc, getDocs, collection, addDoc, updateDoc,arrayUnion, deleteDoc, serverTimestamp } = require('firebase/firestore');
+const {doc, getDocs, collection, addDoc, updateDoc,arrayUnion, deleteDoc, serverTimestamp, increment } = require('firebase/firestore');
 
 /* GET all discussions. */
 router.get('/', async(req, res) =>{
@@ -24,6 +24,7 @@ router.post('/', async(req,res) => {
             originTime : serverTimestamp(),
             poster : req.body.username,
             title : req.body.title,
+            likes : 0,
             thread : []
         })
         console.log("Document sucessfully written with id ", ref.id)
@@ -43,7 +44,8 @@ router.put('/:discussionId',async (req, res) => {
         const newMessage = {
             //time: serverTimestamp(),
             message: message,
-            username: username,};
+            username: username,
+        };
             
         await updateDoc(docRef, {
             thread: arrayUnion(newMessage)
@@ -54,6 +56,39 @@ router.put('/:discussionId',async (req, res) => {
         res.status(500).json(error);
     }
 })
+
+router.put('/:discussionId/like',async (req, res) => {
+    
+    try{
+        const id = req.params.discussionId;
+        const docRef = doc(db,'discussions', id);
+            
+        await updateDoc(docRef, {
+            likes : increment(1)
+        })    
+
+        res.status(200).json({message: 'like added to thread with id: ' + {id}})
+    }catch (error){
+        res.status(500).json(error);
+    }
+})
+
+router.put('/:discussionId/dislike',async (req, res) => {
+    
+    try{
+        const id = req.params.discussionId;
+        const docRef = doc(db,'discussions', id);
+            
+        await updateDoc(docRef, {
+            likes : increment(-1)
+        })    
+
+        res.status(200).json({message: 'like removed from thread with id: ' + {id}})
+    }catch (error){
+        res.status(500).json(error);
+    }
+})
+
 //Delete discussion w/ admin priveleage
 
 

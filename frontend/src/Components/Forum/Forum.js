@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import { TextField, Button, Typography } from '@mui/material';
+import { TextField, Button, Typography, Container } from '@mui/material';
 import axios from 'axios';
 import Thread from './Thread';
 import AddForum from './AddForum';
 import ThreadCard from './ThreadCard';
+import SearchBar from './SearchBar';
 
 
 export default function Forum() {
@@ -24,14 +25,18 @@ export default function Forum() {
           }, 500);
     }
 
-    return (
-        <>
-            <Typography variant = 'h2' sx = {{fontFamily: 'circular-bold', textAlign: 'left', paddingLeft: 2}}>Forum</Typography>
-            <AddForum />
-            {discussions.map((talk) => (
+    /**
+     * {discussions.map((talk) => (
                 <ThreadCard thread = {talk} key = {talk.id}/>
             ))}
-        </>
+     */
+    return (
+        <Container sx = {{margin: 'auto'}}>
+            <Typography variant = 'h2' sx = {{fontFamily: 'circular-bold', textAlign: 'left', paddingLeft: 2}}>Forum</Typography>
+            <AddForum />
+            <SearchBar discussions={discussions}/>
+            
+        </Container>
     )
 }
 
