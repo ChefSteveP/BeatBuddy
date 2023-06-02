@@ -3,6 +3,13 @@ import TopTracks from "./toptracks"
 import TopArtists from "./topartists"
 import Username from "./username"
 import Bio from "./bio"
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+
+
 const clientId = "be50f8453cfb4ec0a40ab3fd4ad12b2e"; // Replace with your client id
 
 export default function Home({ code }) {
@@ -37,15 +44,12 @@ export default function Home({ code }) {
   }
 
   const setDisplayNameWithLog = (newDisplayName) => {
-    console.log('setDisplayName called with:', newDisplayName);
     setDisplayName(newDisplayName);
    }
 
   useEffect(() => {
     const getAccessToken = async () => {
       const verifier = localStorage.getItem("verifier");
-      console.log("verifier:", verifier);
-      console.log("code:", code);
 
       const params = new URLSearchParams();
       params.append("client_id", clientId);
@@ -67,7 +71,6 @@ export default function Home({ code }) {
       }
 
       const { access_token } = await result.json();
-      console.log("access token: ", access_token);
       return access_token;
     }
 
@@ -126,33 +129,39 @@ export default function Home({ code }) {
   }, [token, bio, displayName, isPrivate, location, profilePictureUrl, topArtists, topTracks]);
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '20px', paddingBottom: '50px' }}>
-      <div>
-        {token && (
-          <>
-            <Username
-              token={token}
-              displayName={displayName}
-              setDisplayName={setDisplayNameWithLog}
-              profilePictureUrl={profilePictureUrl}
-              setProfilePictureUrl={setProfilePictureUrl}
-            />
-            <Bio bio={bio} setBio={setBio} location={location} setLocation={setLocation} />
-          </>
-        )}
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'auto' }}>
-          <button onClick={handleToggle}>
-            {isPrivate ? 'Switch to Public' : 'Switch to Private'}
-          </button>
-        </div>
-      </div>
-      <div>
-        <h2>Top Tracks</h2>
-        {token && <TopTracks token={token} tracks={topTracks} setTracks={setTopTracks} />}
-        <h2>Top Artists</h2>
-        {token && <TopArtists token={token} artists={topArtists} setArtists={setTopArtists} />}
-      </div>
-    </div>
-  );
-  
+    <Container maxWidth="lg" sx={{ marginTop: 10 }}>
+    <Grid container spacing={4}>
+    <Grid item xs={12} sm={6} sx={{ minHeight: '100%', marginTop: 0 }}>
+    {token && (
+    <>
+    <Username
+    token={token}
+    displayName={displayName}
+    setDisplayName={setDisplayNameWithLog}
+    profilePictureUrl={profilePictureUrl}
+    setProfilePictureUrl={setProfilePictureUrl}
+    />
+    <Bio bio={bio} setBio={setBio} location={location} setLocation={setLocation} />
+    </>
+    )}
+    <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 'auto' }}>
+    <Button variant="contained" onClick={handleToggle} sx={{ fontFamily: 'circular-medium' }} style={{ backgroundColor: '#1DB954' }}>
+    {isPrivate ? 'Switch to Public' : 'Switch to Private'}
+    </Button>
+    </Box>
+    </Grid>
+    <Grid item xs={12} sm={6} sx={{ minHeight: '100%', marginTop: 4}}>
+    <Typography variant="h5" component="div" gutterBottom sx={{ fontFamily: 'circular-medium' }}>
+    Top Tracks
+    </Typography>
+    {token && <TopTracks token={token} tracks={topTracks} setTracks={setTopTracks} />}
+    <Typography variant="h5" component="div" gutterBottom sx={{ fontFamily: 'circular-medium' }}>
+    Top Artists
+    </Typography>
+    {token && <TopArtists token={token} artists={topArtists} setArtists={setTopArtists} />}
+    </Grid>
+    </Grid>
+    </Container>
+   );
+   
 }
