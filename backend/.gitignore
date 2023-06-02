@@ -1,11 +1,5 @@
 node_modules
 /.env
 /package-lock.json
-<<<<<<< HEAD
-
-permissions.json
-=======
-/permissions.json
 
 /permissions.json
->>>>>>> main
