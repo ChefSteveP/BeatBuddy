@@ -71,7 +71,7 @@ app.get('/conversations/:conversationId/messages', async (req, res) => {
     const { conversationId } = req.params;
     try {
         const messagesSnapshot = await db.collection('conversations').doc(conversationId).collection('messages')
-        .orderBy('createdAt') // add this line
+        .orderBy('createdAt') 
         .get();
         const messages = [];
         messagesSnapshot.forEach(doc => {
@@ -130,7 +130,7 @@ app.post('/conversations/:conversationId/messages', async (req, res) => {
         const message = await db.collection('conversations').doc(conversationId).collection('messages').add({
             senderId,
             text,
-            createdAt: admin.firestore.FieldValue.serverTimestamp() // add this line
+            createdAt: admin.firestore.FieldValue.serverTimestamp()
         });
         res.send({ messageId: message.id });
     } catch (error) {
