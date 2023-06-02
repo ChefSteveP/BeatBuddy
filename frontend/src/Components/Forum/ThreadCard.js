@@ -30,9 +30,12 @@ export default function ThreadCard({ thread }) {
                 <Typography variant='h4' sx={{ fontFamily: 'circular-bold', textOverflow: 'ellipsis' }}>
                     bb/{thread.title}
                 </Typography>
-                <Button variant='contained' onClick={handleClickOpen} sx={{ backgroundColor: '#1db954', borderRadius: 5, fontFamily: 'circular-medium' }}>
-                    View More
-                </Button>
+                <div className='forum-button'>
+                    <Button variant='contained' onClick={handleClickOpen} sx={{ backgroundColor: '#1db954', borderRadius: 5, fontFamily: 'circular-medium' }}>
+                        View More
+                    </Button>
+                </div>
+                
                 <Dialog open={open} onClose={handleClose}>
                     <DialogContent>
                         <DialogContentText sx={{ fontFamily: 'circular-medium' }}>
@@ -50,9 +53,12 @@ export default function ThreadCard({ thread }) {
                         <IconButton onClick={handleDownVote} aria-label="delete">
                             <ArrowCircleDownTwoToneIcon sx={{ fontSize: 50, color: '#1db954' }} />
                         </IconButton>
-                        <Button onClick={handleClose} variant='contained' sx={{ backgroundColor: '#1db954', borderRadius: 5, fontFamily: 'circular-medium' }}>
-                            Leave Thread
-                        </Button>
+                        <div className='forum-button'>
+                            <Button onClick={handleClose} variant='contained' sx={{ backgroundColor: '#1db954', borderRadius: 5, fontFamily: 'circular-medium' }}>
+                                Leave Thread
+                            </Button>
+                        </div>
+                        
 
                     </DialogActions>
                 </Dialog>

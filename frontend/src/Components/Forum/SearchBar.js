@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import ThreadCard from './ThreadCard';

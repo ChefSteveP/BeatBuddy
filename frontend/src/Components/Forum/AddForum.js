@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { TextField, Button, Typography, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import React, {useState} from 'react';
+import { TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import axios from 'axios';
 
 
@@ -27,9 +27,12 @@ export default function AddForum() {
 
     return (
         <div>
-        <Button variant="contained"  sx={{display: 'inline', backgroundColor:'#1db954', margin:1, borderRadius:5, fontFamily:'circular-medium'}}  onClick={handleClickOpen} padding={1}>
-            Add Forum
-        </Button>
+        <div className='forum-button'>
+            <Button variant="contained"  sx={{display: 'inline', backgroundColor:'#1db954', margin:1, borderRadius:5, fontFamily:'circular-medium'}}  onClick={handleClickOpen} padding={1}>
+                Add Forum
+            </Button>
+        </div>
+        
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle>Create New Forum Thread</DialogTitle>
             <DialogContent>
@@ -49,15 +52,21 @@ export default function AddForum() {
             
             </DialogContent>
             <DialogActions>
-            <Button sx ={{color:'red'}}
-            onClick={handleClose}>Cancel</Button>
-            <Button
-                onClick={handleNewThread}      
-                variant = 'contained'
-                sx={{backgroundColor:'#1db954', margin:1, borderRadius:5, fontFamily:'circular-medium'}}
-            >
-                Create
-            </Button>
+            <div className='forum-button'>
+                <Button sx ={{color:'red'}}
+                onClick={handleClose}>Cancel</Button> 
+            </div>
+            
+            <div className='forum-button'>
+                <Button
+                    onClick={handleNewThread}      
+                    variant = 'contained'
+                    sx={{backgroundColor:'#1db954', margin:1, borderRadius:5, fontFamily:'circular-medium'}}
+                >
+                    Create
+                </Button>
+            </div>
+            
             </DialogActions>
         </Dialog>
         </div>
