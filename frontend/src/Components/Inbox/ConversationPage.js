@@ -70,13 +70,13 @@ const ConversationPage = () => {
         <Button
           variant="contained"
           color="primary"
-          style={{ backgroundColor: 'gray', color: 'white', position: 'absolute', left: 0 }}
+          style={{ backgroundColor: 'gray', color: 'white', position: 'absolute', left: 0, fontFamily: 'circular-medium' }}
           onClick={() => navigate('/inbox')}
         >
           Back
         </Button>
         {conversation && (
-          <h1>{conversation.members.slice(1).join(', ')}</h1>
+          <h1 style={{ fontFamily: 'circular-medium' }}>{conversation.members.slice(1).join(', ')}</h1>
         )}
       </Box>
       {}
@@ -92,7 +92,7 @@ const ConversationPage = () => {
             color: 'white',
           }}
         >
-          <p>{message.text}</p>
+          <p style={{ fontFamily: 'circular-medium' }}>{message.text}</p>
         </Box>
       ))}
       <Box
@@ -112,12 +112,13 @@ const ConversationPage = () => {
           onChange={(e) => setNewMessage(e.target.value)}
           placeholder="Type a message..."
           fullWidth
+          InputProps={{style: {fontFamily: 'circular-medium'}}}
         />
         <Button
           type="submit"
           variant="contained"
           color="primary"
-          style={{ backgroundColor: 'gray', color: 'white' }}
+          style={{ backgroundColor: 'gray', color: 'white', fontFamily: 'circular-medium' }}
           sx={{ ml: 1 }}
         >
           Send

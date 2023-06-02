@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { TextField, Button, Box, Paper, Stack, Typography, IconButton } from '@mui/material';
+import { TextField, Button, Paper, Stack, Typography } from '@mui/material';
 
 export default function Thread({ thread }) {
 

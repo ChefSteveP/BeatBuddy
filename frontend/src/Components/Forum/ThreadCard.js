@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { TextField, Button, IconButton, Box, Paper, Stack, Typography, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { Button, IconButton, Paper, Typography, Dialog, DialogActions, DialogContent, DialogContentText } from '@mui/material';
 import Thread from './Thread';
 import ArrowCircleUpTwoToneIcon from '@mui/icons-material/ArrowCircleUpTwoTone';
 import ArrowCircleDownTwoToneIcon from '@mui/icons-material/ArrowCircleDownTwoTone';
@@ -8,9 +8,7 @@ import ArrowCircleDownTwoToneIcon from '@mui/icons-material/ArrowCircleDownTwoTo
 export default function ThreadCard({ thread }) {
 
     const [open, setOpen] = React.useState(false);
-    const [newMessage, setNewMessage] = useState("");
     const [likeCount, setLikeCount] = useState(0);
-    const [messages, setMessages] = useState(thread.thread);
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -28,7 +26,6 @@ export default function ThreadCard({ thread }) {
 
     return (
         <>
-
             <Paper elevation={4} sx={{ padding: 2, marginBottom: 2, borderRadius: 3, fontFamily: 'circular-medium' }} >
                 <Typography variant='h4' sx={{ fontFamily: 'circular-bold', textOverflow: 'ellipsis' }}>
                     bb/{thread.title}
@@ -65,6 +62,3 @@ export default function ThreadCard({ thread }) {
         </>
     )
 }
-
-
-//Maybe Divider,
