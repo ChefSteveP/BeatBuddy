@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { TextField, Button, Typography, Container } from '@mui/material';
+import {Typography, Container } from '@mui/material';
 import axios from 'axios';
-import Thread from './Thread';
 import AddForum from './AddForum';
-import ThreadCard from './ThreadCard';
 import SearchBar from './SearchBar';
 
 

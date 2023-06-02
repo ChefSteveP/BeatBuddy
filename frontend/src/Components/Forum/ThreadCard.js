@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import { TextField, Button,IconButton, Box, Paper, Stack, Typography, Card, CardContent,Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
-import { makeStyles } from "@material-ui/core/styles";
+import {Button,IconButton, Paper, Typography,Dialog, DialogActions, DialogContent, DialogContentText} from '@mui/material';
 import Thread from './Thread';
 import ArrowCircleUpTwoToneIcon from '@mui/icons-material/ArrowCircleUpTwoTone';
 import ArrowCircleDownTwoToneIcon from '@mui/icons-material/ArrowCircleDownTwoTone';
