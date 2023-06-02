@@ -137,11 +137,11 @@ function Discover() {
                 </ThemeProvider>
             </div>
             <div hidden={!isSearching}>
-                <UserCarousel displayText="Search Results" specialInfo={''} users={searchResults} />
+                <UserCarousel displayText="Search Results" specialInfo={''} users={searchResults} backgroundColor={'#C3F0C8'} />
             </div>
             <div hidden={isSearching}>
                 {userCarousels.sort(() => Math.random() - 0.5)}
-                <UserCarousel displayText="All Users" specialInfo={''} users={allUsers} />
+                <div style={{ backgroundColor: '#cbcbcb' }}><UserCarousel displayText="All Users" specialInfo={''} users={allUsers} backgroundColor={'#C3F0C8'} /></div>
             </div>
         </div >
     );

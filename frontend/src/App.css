@@ -59,6 +59,7 @@ html::-webkit-scrollbar {
   background-color: #fefefe;
   color: black;
   padding: 20px;
+  text-align: center;
   border-radius: 10%;
 }
 
