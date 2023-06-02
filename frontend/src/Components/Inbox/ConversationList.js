@@ -66,6 +66,7 @@ export const ConversationList = ({ userId }) => {
                 position: 'absolute',
                 top: '90px',
                 right: '10px',
+                fontFamily: 'circular-medium',
             }}
           >
             Start new conversation
@@ -82,6 +83,7 @@ export const ConversationList = ({ userId }) => {
                     color: 'white',
                     width: '100%',
                     textAlign: 'left',
+                    fontFamily: 'circular-medium',
                   }}
                 >
                   {conversation.members.slice(1).join(', ')}
@@ -108,16 +110,16 @@ export const ConversationList = ({ userId }) => {
               />
             </DialogContent>
             <DialogActions>
-              <Button onClick={closeDialog} color="primary">
+              <Button onClick={closeDialog} color="primary" style={{ fontFamily: 'circular-medium' }}>
                 Cancel
               </Button>
-              <Button onClick={handleNewConversation} style={{ backgroundColor: '#1DB954', color: 'white' }}>
+              <Button onClick={handleNewConversation} style={{ backgroundColor: '#1DB954', color: 'white', fontFamily: 'circular-medium' }}>
                 Start
               </Button>
             </DialogActions>
           </Dialog>
         </div>
-      );
+    );
     };
     
 export default ConversationList;

@@ -5,7 +5,7 @@ import ConversationList from './ConversationList';
 function Inbox() {
     const headingStyle = {
       textAlign: 'left',
-      fontFamily: 'sans-serif',
+      fontFamily: 'circular-bold;',
       paddingLeft: '20px', 
     };
   
