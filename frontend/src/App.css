@@ -22,7 +22,6 @@ html::-webkit-scrollbar {
 }
 
 .discover-header {
-  /* padding-top: 20px; */
   position: fixed;
   top: 0;
   width: 100%;
