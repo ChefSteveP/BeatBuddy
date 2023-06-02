@@ -6,6 +6,7 @@ import axios from "axios";
 import UserCarousel from "./UserCarousel";
 import '../../App.css';
 import { ThemeProvider } from "@emotion/react";
+import NavBar from "../Login/NavBar";
 
 //TODO implement current user view
 //const currentUserID = "Cp8eWVG9JevZU6mN8fxw";
@@ -57,7 +58,7 @@ function Discover() {
         if (scrollingUp && document.getElementsByClassName('discover-header'))
             document.getElementsByClassName('discover-header')[0].style.top = '0';
         else
-            document.getElementsByClassName('discover-header')[0].style.top = '-250px';
+            document.getElementsByClassName('discover-header')[0].style.top = '-300px';
 
         return () => window.removeEventListener("scroll", onScroll);
     }, [scrollingUp]);
@@ -119,9 +120,10 @@ function Discover() {
 
     return (
         <div className="Discover">
-            <ThemeProvider theme={customTheme}>
-                <div className="discover-header">
-                    <Typography variant='h2' sx={{ fontFamily: 'circular-bold', textAlign: 'left', paddingLeft: 2 }}>Discover</Typography>
+            <div className="discover-header">
+                <NavBar />
+                <Typography variant='h2' sx={{ fontFamily: 'circular-bold', textAlign: 'left', paddingLeft: 2, paddingTop: 3 }}>Discover</Typography>
+                <ThemeProvider theme={customTheme}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end', paddingLeft: 2, paddingBottom: 5, paddingTop: 4 }}>
                         <Search sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                         <TextField sx={{ "color:active": '#1DB954' }} label="Search for a user" variant="standard" onKeyUp={async (e) => {
@@ -132,15 +134,15 @@ function Discover() {
                                 setIsSearching(false);
                         }} />
                     </Box>
-                </div>
-                <div hidden={!isSearching}>
-                    <UserCarousel displayText="Search Results" specialInfo={''} users={searchResults} />
-                </div>
-                <div hidden={isSearching}>
-                    {userCarousels.sort(() => Math.random() - 0.5)}
-                    <UserCarousel displayText="All Users" specialInfo={''} users={allUsers} />
-                </div>
-            </ThemeProvider>
+                </ThemeProvider>
+            </div>
+            <div hidden={!isSearching}>
+                <UserCarousel displayText="Search Results" specialInfo={''} users={searchResults} />
+            </div>
+            <div hidden={isSearching}>
+                {userCarousels.sort(() => Math.random() - 0.5)}
+                <UserCarousel displayText="All Users" specialInfo={''} users={allUsers} />
+            </div>
         </div >
     );
 }
