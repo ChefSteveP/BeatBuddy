@@ -32,8 +32,11 @@ export default function Thread({ thread }) {
                 label="Add to thread"
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)} ></TextField>
-            <Button sx={{ backgroundColor: '#1db954', borderRadius: 5, fontFamily: 'circular-medium' }} variant="contained"
-                onClick={handleNewMessage}>Submit</Button>
+            <div className='forum-button'>
+                <Button sx={{ backgroundColor: '#1db954', borderRadius: 5, fontFamily: 'circular-medium' }} variant="contained"
+                    onClick={handleNewMessage}>Submit</Button>    
+            </div>
+            
         </>
     )
 }
