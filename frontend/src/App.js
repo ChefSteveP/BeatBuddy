@@ -6,6 +6,7 @@ import ConversationPage from './Components/Inbox/ConversationPage';
 import NavBar from './Components/Login/NavBar';
 import Login from './Components/Login/login';
 import Home from './Components/Login/home';
+import Forum from './Components/Forum/Forum';
 
 function App() {
   const params = new URLSearchParams(window.location.search);
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/myProfile" element={<Home code={code} />} />
         <Route path="/inbox" element={<Inbox />} />
+        <Route path="/forum" element={<Forum />} />
         <Route path="/conversations/:conversationId" element={<ConversationPage />} />
         {/*<Route path="/home" element={<Home />} />*/}
         {/* add routes for other pages here */}
