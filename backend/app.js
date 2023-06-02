@@ -1,13 +1,23 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var cors = require('cors');
+const bodyParser = require('body-parser');
+
+
+
 
 const discoverRouter = require('./routes/Discover/DiscoverAPI');
 
 const app = express();
 
+require('dotenv').config();
+var app = express();
+app.use(cors());
+app.options('*', cors());
+app.use(bodyParser.json()); // <-- move this line here
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -15,6 +25,10 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
   next();
 });
+
+
+const peopleRouter = require('./routes/Login/people'); // assuming messageBoard.js is in the same directory
+const forumRouter = require('./routes/Forum/discussions');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +40,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', indexRouter);
+app.use('/people', peopleRouter);
+app.use('/users', usersRouter);
+app.use('/discussions', forumRouter);
+// http://localhost:9000/demo
 app.use('/discover', discoverRouter);
 
 // catch 404 and forward to error handler
