@@ -6,7 +6,6 @@ export default function UserProfile({ token, displayName, setDisplayName, profil
     if (token) {
       getUserProfile(token).then(profile => {
         setDisplayName(profile.display_name);
-        console.log('Updated displayName:', profile.display_name);
         if (profile.images && profile.images.length > 0) {
           setProfilePictureUrl(profile.images[0].url);
         }
