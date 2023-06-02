@@ -8,7 +8,7 @@ import '../../App.css';
 import { ThemeProvider } from "@emotion/react";
 
 //TODO implement current user view
-const currentUserID = "Cp8eWVG9JevZU6mN8fxw";
+//const currentUserID = "Cp8eWVG9JevZU6mN8fxw";
 
 function Discover() {
     const [searchResults, setSearchResults] = useState([]);
