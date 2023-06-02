@@ -2,20 +2,75 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.discover-carousel {
-  display: flex;
-  overflow-x: scroll;
-}
-
-.discover-carousel::-webkit-scrollbar {
+html::-webkit-scrollbar {
   display: none;
 }
 
-.discover-carousel-profiles {
+@font-face {
+  font-family: circular-bold;
+  src: url(./Fonts/CircularStd-Medium.otf);
+}
+
+@font-face {
+  font-family: circular-medium;
+  src: url(./Fonts/CircularStd-Medium.otf);
+}
+
+.Discover {
+  display: flex;
+  flex-direction: column;
+}
+
+.discover-header {
+  padding-top: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: top 0.3s;
+  z-index: 1;
+  background-color: #fefefe;
+}
+
+.discover-carousel-outer {
+  height: 2000px;
+  justify-content: center;
+  align-content: center;
+}
+
+.discover-carousel-middle {
+  padding-top: 300px;
+  padding-bottom: 80px;
+  position: sticky;
+  top: 0;
+}
+
+.discover-carousel-inner {
+  display: flex;
+  overflow-x: scroll;
+  padding-top: 30px;
+}
+
+.discover-carousel-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.discover-carousel-profile {
+  transition: all 0.3s ease;
   margin: 20px;
+  background-color: #fefefe;
+  color: black;
+  padding: 20px;
+  border-radius: 10%;
+}
+
+.discover-carousel-profile:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.discover-user-photo {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
 }

@@ -15,9 +15,9 @@ router.get('/', async function (req, res, next) {
     } else if (req.query?.location) {
         q = query(collection(db, 'users'), where('location', '==', req.query.location), where('isPublic', '==', true));
     } else if (req.query?.artist) {
-        q = query(collection(db, 'users'), where('artists', 'array-contains', req.query.artist), where('isPublic', '==', true));
+        q = query(collection(db, 'users'), where('topArtists', 'array-contains', req.query.artist), where('isPublic', '==', true));
     } else if (req.query?.song) {
-        q = query(collection(db, 'users'), where('songs', 'array-contains', req.query.song), where('isPublic', '==', true));
+        q = query(collection(db, 'users'), where('topTracks', 'array-contains', req.query.song), where('isPublic', '==', true));
     } else {
         q = query(collection(db, 'users'), where('isPublic', '==', true));
     }
