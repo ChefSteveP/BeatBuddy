@@ -6,16 +6,12 @@ var logger = require('morgan');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 
-
-
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const app = express();
 
 require('dotenv').config();
-var app = express();
+
 app.use(cors());
-app.options('*', cors()); 
+app.options('*', cors());
 app.use(bodyParser.json()); // <-- move this line here
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -23,9 +19,10 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
   next();
- });
+});
 
 
+const discoverRouter = require('./routes/Discover/DiscoverAPI');
 const peopleRouter = require('./routes/Login/people'); // assuming messageBoard.js is in the same directory
 const forumRouter = require('./routes/Forum/discussions');
 
@@ -39,19 +36,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/people', peopleRouter);
-app.use('/users', usersRouter);
 app.use('/discussions', forumRouter);
 // http://localhost:9000/demo
+app.use('/discover', discoverRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
