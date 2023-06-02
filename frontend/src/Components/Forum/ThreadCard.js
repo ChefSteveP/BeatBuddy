@@ -8,9 +8,7 @@ import ArrowCircleDownTwoToneIcon from '@mui/icons-material/ArrowCircleDownTwoTo
 export default function ThreadCard ({thread}){
 
     const [open, setOpen] = React.useState(false);
-    const [newMessage, setNewMessage] = useState("");
     const [likeCount, setLikeCount] = useState(0);
-    const [messages, setMessages] = useState(thread.thread);
     const handleClickOpen = () => {
         setOpen(true);
     };
