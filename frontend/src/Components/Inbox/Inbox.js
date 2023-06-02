@@ -1,4 +1,3 @@
-// Inbox.js
 import React from 'react';
 
 import ConversationList from './ConversationList';
@@ -7,7 +6,7 @@ function Inbox() {
     const headingStyle = {
       textAlign: 'left',
       fontFamily: 'sans-serif',
-      paddingLeft: '20px',  // adjust this as needed
+      paddingLeft: '20px', 
     };
   
     return (
