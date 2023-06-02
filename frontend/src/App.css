@@ -74,3 +74,12 @@ html::-webkit-scrollbar {
   border-radius: 50%;
   object-fit: cover;
 }
+
+.forum-button {
+  transition: all 0.3s ease;
+}
+
+.forum-button:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
