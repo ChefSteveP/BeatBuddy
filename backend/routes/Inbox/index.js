@@ -8,7 +8,7 @@ const app = express();
 
 // Initialize Firebase
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(serviceAccount)
 });
 
 const db = admin.firestore();
@@ -71,8 +71,8 @@ app.get('/conversations/:conversationId/messages', async (req, res) => {
     const { conversationId } = req.params;
     try {
         const messagesSnapshot = await db.collection('conversations').doc(conversationId).collection('messages')
-        .orderBy('createdAt') 
-        .get();
+            .orderBy('createdAt')
+            .get();
         const messages = [];
         messagesSnapshot.forEach(doc => {
             messages.push({ id: doc.id, ...doc.data() });
@@ -141,5 +141,5 @@ app.post('/conversations/:conversationId/messages', async (req, res) => {
 
 
 app.listen(9001, () => {
-    console.log('Server is running on port 9000');
+    console.log('Server is running on port 9001');
 });

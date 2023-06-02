@@ -7,8 +7,8 @@ import NavBar from './Components/Login/NavBar';
 import Login from './Components/Login/login';
 import Home from './Components/Login/home';
 import Forum from './Components/Forum/Forum';
-import './App.css';
 import Discover from './Components/Discover/Discover';
+import './App.css';
 
 function App() {
   const params = new URLSearchParams(window.location.search);

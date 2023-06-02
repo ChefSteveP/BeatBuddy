@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Button,IconButton, Paper, Typography,Dialog, DialogActions, DialogContent, DialogContentText} from '@mui/material';
+import { Button, IconButton, Paper, Typography, Dialog, DialogActions, DialogContent, DialogContentText } from '@mui/material';
 import Thread from './Thread';
 import ArrowCircleUpTwoToneIcon from '@mui/icons-material/ArrowCircleUpTwoTone';
 import ArrowCircleDownTwoToneIcon from '@mui/icons-material/ArrowCircleDownTwoTone';
@@ -26,7 +26,6 @@ export default function ThreadCard({ thread }) {
 
     return (
         <>
-
             <Paper elevation={4} sx={{ padding: 2, marginBottom: 2, borderRadius: 3, fontFamily: 'circular-medium' }} >
                 <Typography variant='h4' sx={{ fontFamily: 'circular-bold', textOverflow: 'ellipsis' }}>
                     bb/{thread.title}
@@ -63,6 +62,3 @@ export default function ThreadCard({ thread }) {
         </>
     )
 }
-
-
-//Maybe Divider,
