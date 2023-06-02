@@ -6,17 +6,37 @@ const NavBar = () => {
   return (
     <AppBar position="static" sx={{ backgroundColor: '#1DB954' }}>
       <Toolbar>
-      <Button color="inherit" component={Link} to="/discover">
+        <Button 
+          color="inherit" 
+          component={Link} 
+          to="/discover" 
+          style={{ fontFamily: 'circular-bold' }}
+        >
           Discover
         </Button>
-        <Button color="inherit" component={Link} to="/forum">
+        <Button 
+          color="inherit" 
+          component={Link} 
+          to="/forum" 
+          style={{ fontFamily: 'circular-bold' }}
+        >
           Forum
         </Button>
-        <Button color="inherit" component={Link} to="/inbox">
+        <Button 
+          color="inherit" 
+          component={Link} 
+          to="/inbox" 
+          style={{ fontFamily: 'circular-bold' }}
+        >
           Inbox
         </Button>
         <Box sx={{ flexGrow: 1 }} />
-        <Button color="inherit" component={Link} to="/myProfile">
+        <Button 
+          color="inherit" 
+          component={Link} 
+          to="/myProfile" 
+          style={{ fontFamily: 'circular-bold' }}
+        >
           My Profile
         </Button>
       </Toolbar>
