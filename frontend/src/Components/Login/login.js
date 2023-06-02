@@ -1,4 +1,7 @@
 import React from 'react';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 const clientId = "be50f8453cfb4ec0a40ab3fd4ad12b2e"; // Replace with your client id
 
@@ -43,10 +46,17 @@ export default function Login() {
   }
 
   return (
-    <div>
-      <h1>Display your Spotify profile data</h1>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh', paddingTop: '30vh' }}>
+      <h1>Beat Buddy</h1>
+      <h2 style={{ textAlign: 'center', maxWidth: '80%', marginBottom: '2rem' }}>
+        Social Media for Spotify users to chat with each other and discuss all things music.
+      </h2>
       <button onClick={redirectToAuthCodeFlow}>Login with Spotify</button>
     </div>
   );
+  
+  
+  
+  
 }
 

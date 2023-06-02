@@ -16,7 +16,7 @@ app.use(bodyParser.json()); // <-- move this line here
 
 const peopleRouter = require('./routes/Login/people'); // assuming messageBoard.js is in the same directory
 
-app.use('/people', peopleRouter);
+
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -37,6 +37,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/people', peopleRouter);
 app.use('/users', usersRouter);
 // http://localhost:9000/demo
 

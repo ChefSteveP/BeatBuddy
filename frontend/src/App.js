@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './Components/Login/login';
-import Profile from './Components/Login/profile';
+import Home from './Components/Login/home';
 
 function App() {
   const params = new URLSearchParams(window.location.search);
@@ -8,8 +8,7 @@ function App() {
 
   return (
    <>
-     {!code && <Login />}
-     {code && <Profile code={code} />}
+     {code ? <Home code={code} />: <Login />}
    </>
  );
 }

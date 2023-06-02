@@ -4,7 +4,7 @@ const db = require('../../firebase');
 const { getDocs, collection, addDoc, updateDoc, deleteDoc, doc, query, where } = require('firebase/firestore');
 console.log('people.js loaded')
 
-router.get('/people', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     console.log('Received GET request with data:', req.body);
     const displayName = req.query.displayName;
@@ -23,18 +23,28 @@ router.get('/people', async (req, res) => {
   }
 });
 
-router.post('/people', async (req, res) => {
+
+router.post('/', async (req, res) => {
   try {
-    console.log('Received POST request with data:', req.body);
-    const newUser = req.body;
-    const docRef = await addDoc(collection(db, 'users'), newUser);
-    res.json({ id: docRef.id });
+    const ref = await addDoc(collection(db, 'users'), {
+      bio: req.body.bio,
+      displayName: req.body.displayName,
+      username: req.body.displayName,
+      isPublic: req.body.isPublic,
+      location: req.body.location,
+      photo: req.body.photo,
+      topArtists: req.body.topArtists,
+      topTracks: req.body.topTracks
+    });
+    console.log("Document successfully written with id ", ref.id);
+    return res.status(201).json({ message: 'post successful', id: ref.id });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    return res.status(500).json(error);
   }
 });
 
-router.put('/people/:id', async (req, res) => {
+
+router.put('/:id', async (req, res) => {
   try {
     console.log('Received PUT request with data:', req.body);
     const userId = req.params.id;
@@ -47,7 +57,7 @@ router.put('/people/:id', async (req, res) => {
   }
 });
 
-router.delete('/people/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     console.log('Received DELETE request with data:', req.body);
     const userId = req.params.id;
