@@ -16,7 +16,7 @@ export const ConversationList = ({ userId }) => {
     const [dialogOpen, setDialogOpen] = useState(false);
 
     const fetchConversations = async () => {
-      const response = await axios.get(`http://localhost:9000/conversations/${currentUser}`);
+      const response = await axios.get(`http://localhost:9001/conversations/${currentUser}`);
       const convs = response.data;
       setConversations(convs);
     }
@@ -37,11 +37,11 @@ export const ConversationList = ({ userId }) => {
     const handleNewConversation = async () => {
         closeDialog();
         try {
-          const response = await axios.get(`http://localhost:9000/users/byUsername/${newUserName}`);
+          const response = await axios.get(`http://localhost:9001/users/byUsername/${newUserName}`);
           
           const newUserId = response.data.id;
     
-          await axios.post('http://localhost:9000/conversations', { senderId: currentUser, recipientId: newUserId })
+          await axios.post('http://localhost:9001/conversations', { senderId: currentUser, recipientId: newUserId })
             .then((response) => {
               const { conversationId } = response.data;
               setConversations([...conversations, { id: conversationId, members: [newUserName] }]);

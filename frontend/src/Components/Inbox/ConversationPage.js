@@ -14,7 +14,7 @@ const ConversationPage = () => {
 
   const fetchMessages = useCallback(async () => {
     try{
-      const response = await axios.get(`http://localhost:9000/conversations/${conversationId}/messages`);
+      const response = await axios.get(`http://localhost:9001/conversations/${conversationId}/messages`);
       const messages = response.data;
       
       // Sort messages by createdAt timestamp
@@ -28,7 +28,7 @@ const ConversationPage = () => {
 
   const fetchConversation = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:9000/conversations/${currentUserID}`);
+      const response = await axios.get(`http://localhost:9001/conversations/${currentUserID}`);
       const convs = response.data;
 
       const matchingConversation = convs.find(conv => conv.id === conversationId);
@@ -52,7 +52,7 @@ const ConversationPage = () => {
     e.preventDefault();
 
     try {
-      await axios.post(`http://localhost:9000/conversations/${conversationId}/messages`, {
+      await axios.post(`http://localhost:9001/conversations/${conversationId}/messages`, {
         senderId: currentUserID,
         text: newMessage
       });
