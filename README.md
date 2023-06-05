@@ -57,5 +57,5 @@ To use BeatBuddy, first click the 'LOGIN WITH SPOTIFY' button and authorize Beat
   3. Nihar Satasia - Created the inbox page. Here users can start direct messages with existing users in the system. Borrows the structure of interaction that i-message uses. 
   4. Kevin Shi - Created the Login and Profile pages. Using spotify authentication, a user will sign in with their account. Then using the spotify API the profile page requests that users relavant data. This data is displayed in the categories of Top Songs, Top Artists, and liked songs.
   
-###Database Documentation
-1. Firebase Firestore cloud database. It was configured to this web application and in test mode. That mean access to our database will expire in 30 days. 
+### Database Documentation
+1. Firebase Firestore cloud database. A NoSQL cloud storage system by google that was configured to this web application and in test mode. That mean access to our database will expire in 30 days. 
