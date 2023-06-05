@@ -51,7 +51,7 @@ To use BeatBuddy, first click the 'LOGIN WITH SPOTIFY' button and authorize Beat
     -   Displays all the discussion boards.
     -   Users can click on and access the posts.
 ## Credits
-**Group Members
+###Group Members
   1. William Kieffer - Created the discovery page. Here users can see other users that compare to them across a number of different categories. These can include: liked songs, top artist, top songs, or even region. As well as search all public users. 
   2. Stephen Pasch - Created the forum page. Here users can start a public forum topic. Then other users can comment their responses. Forum threads can be upvoted or downvoted and searched for by name.
   3. Nihar Satasia - Created the inbox page. Here users can start direct messages with existing users in the system. Borrows the structure of interaction that i-message uses. 
