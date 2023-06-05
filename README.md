@@ -1,6 +1,12 @@
 # BeatBuddy
 Social Media for Spotify users to chat with each other and discuss all things music.
 ## Table of Contents
+1. [Project Title](#beatbuddy)
+2. [Installation](#installation)
+3. [How to Use Project](#how-to-use-project)
+4. [Major Components and Features](#major-components-and-features)
+5. [The Status of those Features](#the-status-of-those-features)
+6. [Credits](#credits)
 ## Installation 
 1. Clone the repository to your local machine: git clone https://github.com/ChefSteveP/BeatBuddy.git
 2. Install the required dependencies: axios, body-parser, cookie-parser, cors, debug, dotenv, express, firebase, firebase-admin, http-errors, jade, morgan, mui, react-router-dom
