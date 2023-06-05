@@ -56,4 +56,6 @@ To use BeatBuddy, first click the 'LOGIN WITH SPOTIFY' button and authorize Beat
   2. Stephen Pasch - Created the forum page. Here users can start a public forum topic. Then other users can comment their responses. Forum threads can be upvoted or downvoted and searched for by name.
   3. Nihar Satasia - Created the inbox page. Here users can start direct messages with existing users in the system. Borrows the structure of interaction that i-message uses. 
   4. Kevin Shi - Created the Login and Profile pages. Using spotify authentication, a user will sign in with their account. Then using the spotify API the profile page requests that users relavant data. This data is displayed in the categories of Top Songs, Top Artists, and liked songs.
-
+  5. 
+###Database Documentation
+1. Firebase Firestore cloud database. It was configured to this web application and in test mode. That mean access to our database will expire in 30 days. 
